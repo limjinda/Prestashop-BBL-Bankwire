@@ -40,7 +40,6 @@ class BankBBL extends PaymentModule{
 	public function install(){
 		if (!parent::install() || !$this->registerHook('payment') || !$this->registerHook('paymentReturn') || !$this->registerHook('header'))
 			return false;
-		Configuration::updateValue('PS_OS_BBLBANKWIRE', 13);
 		return true;
 	}
 
@@ -153,7 +152,7 @@ class BankBBL extends PaymentModule{
 			return;
 
 		$state = $params['objOrder']->getCurrentState();
-		if (in_array($state, array(Configuration::get('PS_OS_BBLBANKWIRE'), Configuration::get('PS_OS_OUTOFSTOCK'), Configuration::get('PS_OS_OUTOFSTOCK_UNPAID'))))
+		if (in_array($state, array(Configuration::get('PS_OS_BANKWIRE'), Configuration::get('PS_OS_OUTOFSTOCK'), Configuration::get('PS_OS_OUTOFSTOCK_UNPAID'))))
 		{
 			$this->smarty->assign(array(
 				'total_to_pay' => Tools::displayPrice($params['total_to_pay'], $params['currencyObj'], false),

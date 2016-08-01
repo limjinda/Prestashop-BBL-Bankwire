@@ -40,7 +40,7 @@ class BankBBL extends PaymentModule{
 	public function install(){
 		if (!parent::install() || !$this->registerHook('payment') || !$this->registerHook('paymentReturn') || !$this->registerHook('header'))
 			return false;
-		Configuration::updateValue('PS_OS_BBLBANKWIRE', 14);
+		Configuration::updateValue('PS_OS_BBLBANKWIRE', 13);
 		return true;
 	}
 
